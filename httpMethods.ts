@@ -159,23 +159,24 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse<Inco
         if(method === "DELETE"){
             const build = JSON.parse(Container);
 
-            let datavalue : any = url?.split("/")[1];
-            let details = parseInt(datavalue);
+            let datavalue: any = url?.split("/")[1]
+            let details = parseInt(datavalue)
 
             let findObject = class08.some((el) => {
                 return el.id === details
             })
             if(findObject === false){
+
             }else{
-                class08 = class08.map((user: any) =>{
+                class08 = class08.map((user: any) => {
                     if(user?.id === details){
                         return{
-                            id: user?.id
+                            id : user?.id
                         }
                     }
-                    return user
+                    return user;
                 });
-                (response.message = "user's infos deleted successfully"),
+                (response.message = "Informations deleted successfully"),
                 (response.success = true),
                 (response.data = class08),
                 res.write(JSON.stringify({status, response}));
