@@ -170,7 +170,7 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse<Inco
                 class08 = class08.map((user: any) =>{
                     if(user?.id === details){
                         return{
-                            id = user?.id
+                            id: user?.id
                         }
                     }
                     return user
@@ -182,7 +182,7 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse<Inco
                 res.end()
             }
         };
-        },
+        })
     })
 
 server.listen(port, () => {
