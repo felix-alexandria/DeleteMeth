@@ -159,32 +159,32 @@ const server = http.createServer((req: IncomingMessage, res: ServerResponse<Inco
         if(method === "DELETE"){
             const build = JSON.parse(Container);
 
-            let details: any = url?.split("/")[1]
-            let datavalue = parseInt(details)
+            let datavalue : any = url?.split("/")[1];
+            let details = parseInt(datavalue);
 
-            let findObject = class08.some((el)=> {
-                return el.id === datavalue
+            let findObject = class08.some((el) => {
+                return el.id === details
             })
             if(findObject === false){
             }else{
-                class08 = class08.map((user: any)=> {
-                    if(user?.id === datavalue){
+                class08 = class08.map((user: any) =>{
+                    if(user?.id === details){
                         return{
-                            id: user?.id,
-                           
+                            id = user?.id
                         }
                     }
                     return user
                 });
-                (response.message = "user infos deleted"),
-                (response.data = class08),
+                (response.message = "user's infos deleted successfully"),
                 (response.success = true),
+                (response.data = class08),
                 res.write(JSON.stringify({status, response}));
-                res.end()   
+                res.end()
             }
-        }
+        };
+        },
     })
-});
+
 server.listen(port, () => {
     console.log("Listening to port", port)
 });
